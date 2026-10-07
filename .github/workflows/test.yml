@@ -1,0 +1,33 @@
+name: test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  formula:
+    name: ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    steps:
+      - uses: Homebrew/actions/setup-homebrew@main
+
+      - uses: actions/checkout@v4
+
+      - name: Registrar el tap local
+        run: |
+          mkdir -p "$(brew --repo sebascode/baton)"
+          rsync -a --delete ./ "$(brew --repo sebascode/baton)/"
+
+      - name: audit
+        run: brew audit --strict --online sebascode/baton/baton
+
+      - name: install
+        run: brew install --build-from-source sebascode/baton/baton
+
+      - name: test
+        run: brew test sebascode/baton/baton
