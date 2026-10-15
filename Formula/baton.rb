@@ -1,8 +1,8 @@
 class Baton < Formula
   desc "Orquesta instalaciones y despliegues de compose, Dockerfile, sh y SQL"
   homepage "https://github.com/sebascode/baton_app"
-  url "https://github.com/sebascode/baton_app/archive/refs/tags/v0.8.0.tar.gz"
-  sha256 "77fdc7a23547b5ec0b668aed813b8ad7c47a8547c17962887d46739a217ba001"
+  url "https://github.com/sebascode/baton_app/archive/refs/tags/v0.9.0.tar.gz"
+  sha256 "6f736c14aa3a1b2039f4a604edf8c2eb933dff2e05cf9a400a15f6fd52ebdf0a"
   license "MIT"
   head "https://github.com/sebascode/baton_app.git", branch: "main"
 
